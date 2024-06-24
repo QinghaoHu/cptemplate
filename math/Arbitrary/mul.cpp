@@ -39,24 +39,29 @@ typedef pair<double, double> PDD;
 const ll mod = 1e9 + 7;
 const db eps = 1e-9;
 const int INF = 0x3f3f3f3f;
+//Here is the template useful for the project
 
-void solve() {
+vector<int> A;
 
+void get(string a) {
+	reverse(all(a));
+	for (auto i : a) {
+		A.pb(i - '0');
+	}
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T = 1;
-    //cin >> T;
-
-    while (T --) {
-        solve();
-    }
-
-    return 0;
+vector<int> mul(vector<int> &A, int B) {
+	vector<int> C;
+	int t = 0;
+	for (int i = 0; i < SZ(A); i++) {
+		t += B * A[i];
+		C.pb(t % 10);
+		t /= 10;
+	}
+	while(t > 0) {
+		C.pb(t % 10);
+		t /= 10;
+	}
+	while(SZ(C) > 1 && C.back() == 0) C.pop_back();
+	return C;
 }
-/*
-* Note is here:
-* */

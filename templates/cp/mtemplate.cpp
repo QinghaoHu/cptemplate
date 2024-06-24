@@ -39,24 +39,6 @@ typedef pair<double, double> PDD;
 const ll mod = 1e9 + 7;
 const db eps = 1e-9;
 const int INF = 0x3f3f3f3f;
+//Here is the template useful for the project
 
-void solve() {
 
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T = 1;
-    //cin >> T;
-
-    while (T --) {
-        solve();
-    }
-
-    return 0;
-}
-/*
-* Note is here:
-* */

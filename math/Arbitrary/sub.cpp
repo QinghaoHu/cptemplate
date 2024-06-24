@@ -39,24 +39,45 @@ typedef pair<double, double> PDD;
 const ll mod = 1e9 + 7;
 const db eps = 1e-9;
 const int INF = 0x3f3f3f3f;
+//Here is the template useful for the project
 
-void solve() {
+vector<int> A, B;
 
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T = 1;
-    //cin >> T;
-
-    while (T --) {
-        solve();
+void get(string a, string b) {
+    reverse(all(a)); reverse(all(b));
+    for (auto i : a) {
+        A.pb(i - '0');
     }
-
-    return 0;
+    for (auto i : b) {
+        B.pb(i - '0');
+    }
 }
-/*
-* Note is here:
-* */
+
+bool cmp(vector<int> &A, vector<int> &B) {
+    if (SZ(A) != SZ(B)) {
+        return SZ(A) > SZ(B);
+    }
+    for (int i = SZ(A) - 1; i >= 0; i--) {
+        if (A[i] != B[i]) {
+            return A[i] > B[i];
+        }
+    }
+    return true;
+}
+
+vector<int> sub(vector<int> &A, vector<int> &B) {
+    vector<int> C;
+    int t = 0;
+    for (int i = 0; i < SZ(A); i++) {
+        t = A[i] - t;
+        if (i < SZ(B)) t -= B[i];
+        if (t < 0) {
+            C.pb((t + 10) % 10);
+            t = 1;
+        } else {
+            C.pb(t);
+        }
+    }
+    while(SZ(C) > 1 && C.back() == 0) C.pop_back();
+    return C;
+}
