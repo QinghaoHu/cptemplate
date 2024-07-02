@@ -1,28 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
-#include <cstdio>
-#include <algorithm>
-#include <numeric>
-#include <functional>
-#include <vector>
-#include <array>
-#include <list>
-#include <deque>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <stack>
-#include <bitset>
-#include <cmath>
-#include <cstdlib>
-#include <cstring>
-#include <cctype>
-#include <ctime>
-#include <climits>
+#include <bits/stdc++.h>
 using namespace std;
 #define rep(i, a, n) for (int i = a; i < n; i++) 
 #define per(i, a, n) for (int i = a; i >= n; i--)
@@ -46,6 +22,10 @@ const double eps = 1e-9;
 const db PI = acos(-1.0);
 const int INF = 0x3f3f3f3f;
 
+#ifdef DEBUG
+#define debug(x) cerr << #x << " = " << x << '\n';
+#endif
+
 void solve() {
 
 }
@@ -55,19 +35,11 @@ int main() {
     cin.tie(nullptr);
 
     int T = 1;
-    //cin >> T;
-
-    while (T --) {
+    // cin >> T;
+    
+    rep(t, 0, T) {
         solve();
     }
 
     return 0;
 }
-
-/* stuff you should look for
- * int overflow, array bounds
- * special cases (n=1?)
- * do smth instead of nothing and stay organized
- * WRITE STUFF DOWN
- * DON'T GET STUCK ON ONE APPROACH
- */

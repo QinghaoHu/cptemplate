@@ -1,28 +1,4 @@
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
-#include <cstdio>
-#include <algorithm>
-#include <numeric>
-#include <functional>
-#include <vector>
-#include <array>
-#include <list>
-#include <deque>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <stack>
-#include <bitset>
-#include <cmath>
-#include <cstdlib>
-#include <cstring>
-#include <cctype>
-#include <ctime>
-#include <climits>
+#include <bits/stdc++.h>
 using namespace std;
 #define f first
 #define s second
@@ -36,12 +12,15 @@ typedef double db;
 typedef pair<int, int> PII;
 typedef pair<int, string> PIS;
 typedef pair<double, double> PDD;
-const ll mod = 1e9 + 7;
+const ll mod = 999971;
 const db eps = 1e-9;
+const int base = 101;
 const int INF = 0x3f3f3f3f;
 
 void solve() {
-
+    int a, b;
+    cin >> a >> b;
+    cout << a + b << endl;
 }
 
 int main() {

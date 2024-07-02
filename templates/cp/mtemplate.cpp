@@ -36,8 +36,9 @@ typedef double db;
 typedef pair<int, int> PII;
 typedef pair<int, string> PIS;
 typedef pair<double, double> PDD;
-const ll mod = 1e9 + 7;
+const ll mod = 999971;
 const db eps = 1e-9;
+const int base = 101;
 const int INF = 0x3f3f3f3f;
 //Here is the template useful for the project
 
