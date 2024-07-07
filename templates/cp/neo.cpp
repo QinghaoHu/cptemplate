@@ -18,7 +18,7 @@ typedef pair<int, int> PII;
 typedef pair<double, double> PDD;
 typedef pair<string, int> PSI;
 const int mod = 999971;
-const double eps = 1e-9;
+const db eps = 1e-9;
 const db PI = acos(-1.0);
 const int INF = 0x3f3f3f3f;
 

@@ -27,4 +27,8 @@ const int INF = 0x3f3f3f3f;
 #endif
 
 // Here is the template
+const int SIZE = 100010;
+
+int heap[SIZE], p = 0;
+
 

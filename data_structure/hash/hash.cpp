@@ -28,3 +28,25 @@ const int INF = 0x3f3f3f3f;
 
 // Here is the template
 
+const int base = 131;
+const int N = 1e6 + 10;
+
+ull p[N];
+
+void init() {
+    rep(i, 1, N + 1) {
+        p[i] = p[i - 1] * base % mod;
+    }
+}
+
+void hash(string s, vector<ull> &a) {
+    rep(i, 1, N + 1) {
+        a[i] = a[i - 1] * base + s[i - 1] - 'a' + 1;
+        a[i] %= mod;
+    }
+}
+
+int get(int l, int r, vector<ull> &a) {
+     int t = a[r] - a[l - 1] * p[r - l + 1];
+     return (t % mod + mod) % mod;
+}
