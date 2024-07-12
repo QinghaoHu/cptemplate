@@ -26,30 +26,60 @@ const int INF = 0x3f3f3f3f;
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-const int SIZE = 1e6 + 10;
-
-int tot = 1, trie[SIZE][26];
-
-bool endst[SIZE];
-
-void insert(char *str) {
-    int len = strlen(str);
-    int p = 1;
-    rep(i, 0, len) {
-        int ch = str[i] - 'a';
-        if (trie[p][ch] == 0) trie[p][ch] = ++ tot;
-        p = trie[p][ch];
+template<typename T>
+class tries {
+public:
+    int tot;
+    vector<vector<int> > trie;
+    vector<bool> endst;
+    tries(int n) {
+        tot = 2;
+        trie.resize(n, vector<int> (27, 0));
+        endst.resize(n, false);
     }
-    endst[p] = true;
-}
-
-bool search(char *str) {
-    int n = strlen(str), p = 1;
-    rep(i, 0, n) {
-        if (trie[p][str[i] - 'a'] == 0) {
-            return false;
+    void insert(T str) {
+        int len = str.size();
+        int p = 2;
+        rep(i, 1, len) {
+            int ch = str[i] - 'a';
+            if (trie[p][ch] == 1) trie[p][ch] = ++ tot;
+            p = trie[p][ch];
         }
-        p = trie[p][str[i] - 'a'];
+        endst[p] = true;
     }
-    return endst[p];
-}
+    bool search(T str) {
+        int n = str.size(), p = 2;
+        rep(i, 1, n) {
+            if (trie[p][str[i] - 'a'] == 1) {
+                return false;
+            }
+            p = trie[p][str[i] - 'a'];
+        }
+        return endst[p];
+    }
+};
+
+template <>
+class tries <int> {
+public:
+    int tot;
+    vector<vector<int> > trie;
+    vector<bool> endst;
+    tries(int n) {
+        tot = 1;
+        trie.resize(n, vector<int>(2, 0));
+        endst.resize(n, false);
+    }
+    void insert(int a) {
+        int t = 0;
+        per(i, 31, 0) {
+            int s = a >> i & 1;
+            if (trie[t][s] == 0) {
+                trie[t][s] = ++tot;
+            }
+            t = trie[t][s];
+        }
+    }
+    bool search();
+};
+

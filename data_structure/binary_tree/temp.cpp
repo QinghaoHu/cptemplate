@@ -27,8 +27,103 @@ const int INF = 0x3f3f3f3f;
 #endif
 
 // Here is the template
-const int SIZE = 100010;
+// greater priority_queue
+template <typename T>
+class bingTree {
+public:
+    int t;
+    vector<T> heap;
 
-int heap[SIZE], p = 0;
+    bingTree(int n) : t(0), heap(n) {}
 
+    void up(int p) {
+        while (p > 1 && heap[p] > heap[p / 2]) {
+            swap(heap[p], heap[p / 2]);
+            p /= 2;
+        }
+    }
 
+    void push(T val) {
+        heap[++t] = val;
+        up(t);
+    }
+
+    T top() const {
+        return heap[1];
+    }
+
+    void down(int p) {
+        int s = p * 2;
+        while (s <= t) {
+            if (s < t && heap[s] < heap[s + 1]) s++;
+            if (heap[s] > heap[p]) {
+                swap(heap[s], heap[p]);
+                p = s;
+                s = p * 2;
+            } else {
+                break;
+            }
+        }
+    }
+
+    void pop() {
+        heap[1] = heap[t--];
+        down(1);
+    }
+
+    void erase(int k) {
+        heap[k] = heap[t--];
+        up(k);
+        down(k);
+    }
+};
+
+template <typename T>
+class binlTree {
+public:
+    int t;
+    vector<T> heap;
+
+    binlTree(int n) : t(0), heap(n) {}
+
+    void up(int p) {
+        while (p > 1 && heap[p] < heap[p / 2]) {
+            swap(heap[p], heap[p / 2]);
+            p /= 2;
+        }
+    }
+
+    void push(T val) {
+        heap[++t] = val;
+        up(t);
+    }
+
+    T top() const {
+        return heap[1];
+    }
+
+    void down(int p) {
+        int s = p * 2;
+        while (s <= t) {
+            if (s < t && heap[s] > heap[s + 1]) s++;
+            if (heap[s] < heap[p]) {
+                swap(heap[s], heap[p]);
+                p = s;
+                s = p * 2;
+            } else {
+                break;
+            }
+        }
+    }
+
+    void pop() {
+        heap[1] = heap[t--];
+        down(1);
+    }
+
+    void erase(int k) {
+        heap[k] = heap[t--];
+        up(k);
+        down(k);
+    }
+};

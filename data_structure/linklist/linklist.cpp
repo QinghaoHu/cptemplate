@@ -1,76 +1,77 @@
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
-#include <cstdio>
-#include <algorithm>
-#include <numeric>
-#include <functional>
-#include <vector>
-#include <array>
-#include <list>
-#include <deque>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <stack>
-#include <bitset>
-#include <cmath>
-#include <cstdlib>
-#include <cstring>
-#include <cctype>
-#include <ctime>
-#include <climits>
+#include <bits/stdc++.h>
 using namespace std;
-#define f first
-#define s second
-#define all(x) (x).begin(), (x).end()
+#define rep(i, a, n) for (int i = a; i < n; i++)
+#define per(i, a, n) for (int i = a; i >= n; i--)
 #define pb push_back
+#define eb emplace_back
 #define mp make_pair
-#define SZ(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+#define fi first
+#define se second
+#define SZ(x) ((int)x.size())
+#define reopen(x) { freopen(#x".in", "r", stdin); freopen(#x".out", "w", stdout); }
 typedef long long ll;
-typedef long double ld;
+typedef unsigned long long ull;
 typedef double db;
+typedef long double ld;
 typedef pair<int, int> PII;
-typedef pair<int, string> PIS;
 typedef pair<double, double> PDD;
-const ll mod = 1e9 + 7;
-const db eps = 1e-9;
+typedef pair<string, int> PSI;
+const int mod = 999971;
+const double eps = 1e-9;
+const db PI = acos(-1.0);
 const int INF = 0x3f3f3f3f;
+
+#ifdef DEBUG
+#define debug(x) cerr << #x << " = " << x << '\n';
+#endif
 //Here is the template useful for the project
 
-const int N = 1e6 + 10;
+template <typename T, int MAX_SIZE>
+class Nodes {
+public:
+    int head, tail, tot;
+    struct Node {
+        T val;
+        int prev, next;
+    };
+    Node nodes[MAX_SIZE];
 
-struct node {
-    int val;
-    int prev, next;
-} nodes[N];
+    Nodes() {
+        head = 1, tail = 2;
+        tot = 2;
+        nodes[head].next = tail;
+        nodes[tail].prev = head;
+    }
 
-int head, tail, tot;
+    void add(int p, T value) {
+        nodes[tot].val = value;
+        nodes[tot].next = nodes[p].next;
+        nodes[nodes[p].next].prev = tot;
+        nodes[p].next = tot;
+        nodes[tot].prev = p;
+        ++tot;
+    }
 
-void init() {
-    head = 1, tail = 2;
-    tot = 2;
-    nodes[head].next = 2;
-    nodes[tail].prev = 1;
-}
+    void del(int p) {
+        nodes[nodes[p].prev].next = nodes[p].next;
+        nodes[nodes[p].next].prev = nodes[p].prev;
+    }
 
-void add(int p, int value) {
-    nodes[++tot].val = value;
-    nodes[tot].next = nodes[p].next;
-    nodes[nodes[p].next].prev = tot;
-    nodes[p].next = tot;
-    nodes[tot].prev = p;
-}
+    int prev(int n) const {
+        return nodes[n].prev;
+    }
 
-void del(int p) {
-    nodes[nodes[p].prev].next = nodes[p].next;
-    nodes[nodes[p].next].prev = nodes[p].prev;
-}
+    int next(int n) const {
+        return nodes[n].next;
+    }
 
-void clear() {
-    memset(nodes, 0, sizeof nodes);
-    head = tail = tot = 0;
-}
+    void modify(int p, T value) {
+        nodes[p].val = value;
+    }
+
+    void clear() {
+        head = tail = tot = 0;
+    }
+};
+

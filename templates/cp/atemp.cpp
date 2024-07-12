@@ -15,6 +15,7 @@ typedef unsigned long long ull;
 typedef double db;
 typedef long double ld;
 typedef pair<int, int> PII;
+typedef pair<ll, int> PLI;
 typedef pair<double, double> PDD;
 typedef pair<string, int> PSI;
 const int mod = 999971;
