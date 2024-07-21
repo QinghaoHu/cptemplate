@@ -26,32 +26,20 @@ const int INF = 0x3f3f3f3f;
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-const int N = 1e6 + 10;
-
-int n, m;
-int nxt[N + 1], f[N + 1];
-char s[N + 2], p[N + 2];
-
-void kmp() {
-    n = strlen(s + 1), m = strlen(p + 1);
-    int j = 0;
+vector<int> nxt(string str) {
+    int n = (int)str.size();
+    str = " " + str;
+    vector<int> nxt(n + 1, 0);
     nxt[1] = 0;
-    for (int i = 2; i <= m; i++) {
-        while(j > 0 && p[j + 1] != p[i]) {
+    int j = 0;
+    for (int i = 2; i <= n; i++) {
+        while (j > 0 && str[j + 1] != str[i]) {
             j = nxt[j];
         }
-        if (p[j + 1] == p[i]) {
+        if (str[j + 1] == str[i]) {
             j++;
         }
         nxt[i] = j;
     }
-    rep(i, 1, n + 1) {
-        while((j == m) || (j > 0 && p[j + 1] != s[i])) {
-            j = nxt[j];
-        }
-        if (p[j + 1] == s[i]) {
-            j++;
-        }
-        f[i] = j;
-    }
+    return nxt;
 }

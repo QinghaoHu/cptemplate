@@ -27,21 +27,16 @@ const int INF = 0x3f3f3f3f;
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-const int N = 100010;
-
-int n;
-int z[N];
-char s[N];
-
-void exkmp(char *s, int n) {
+vector<int> ZFunction(string s) {
+    int n = s.size();
+    vector<int> z(n + 1);
     int l = 1, r = 0;
     z[1] = 0;
-    rep(i, 2, n + 1) {
+    for (int i = 2; i <= n; i++) {
         if (i > r) {
             z[i] = 0;
         } else {
-            int k = i - l + 1;
-            z[i] = min(z[k], r - i + 1);
+            z[i] =  min(z[i - l + 1], r - i + 1);
         }
         while (i + z[i] <= n && s[z[i] + 1] == s[i + z[i]]) {
             z[i]++;
@@ -50,22 +45,5 @@ void exkmp(char *s, int n) {
             l = i, r = i + z[i] - 1;
         }
     }
-} 
-
-void solve() {
-
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T = 1;
-    // cin >> T;
-    
-    rep(t, 0, T) {
-        solve();
-    }
-
-    return 0;
+    return z;
 }
