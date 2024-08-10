@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define rep(i, a, n) for (int i = a; i < n; i++) 
+
+#define rep(i, a, n) for (int i = a; i < n; i++)
 #define per(i, a, n) for (int i = a; i >= n; i--)
 #define pb push_back
 #define eb emplace_back
@@ -10,19 +11,23 @@ using namespace std;
 #define se second
 #define arr array
 #define VI vector<int>
-#define SZ(x) ((int)x.size()) 
+#define SZ(x) ((int)x.size())
 #define reopen(x) { freopen(#x".in", "r", stdin); freopen(#x".out", "w", stdout); }
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef double db;
-typedef long double ld; typedef pair<int, int> PII;
+typedef long double ld;
+typedef pair<int, int> PII;
 typedef pair<ll, int> PLI;
 typedef pair<double, double> PDD;
 typedef pair<string, int> PSI;
+
 const int mod = 999971;
 const db eps = 1e-9;
 const db PI = acos(-1.0);
 const int INF = 0x3f3f3f3f;
+
 ll gcd(ll a, ll b) {return !b ? a : gcd(b, a % b);}
 ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 
@@ -30,19 +35,26 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-void solve() {
-
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T = 1;
-    // cin >> T;
-    while (T--) {
-        solve();
+vector<int> mutipleFactor(int n) {
+    vector<int> factor;
+    for (int i = 1; i * i <= n; i++) {
+        if (n % i == 0) {
+            factor.push_back(i);
+            if (i != n / i) {
+                factor.push_back(n / i);
+            }
+        }
     }
-
-    return 0;
+    return factor;
 }
+
+vector<vector<int> > trialDivision (int n) {
+    vector<vector<int>> factor(n + 1);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n / i; j++) {
+            factor[i *j].push_back(i);
+        }
+    }
+    return factor;
+}
+
