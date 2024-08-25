@@ -25,19 +25,12 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-void solve() {
-
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-
-    int tt;
-    cin >> tt;
-    while(tt--) {
-        solve();
+ll exgcd(ll a, ll b, ll &x, ll &y) {
+    if (b == 0) {
+        x = 1, y = 0;
+        return a;
     }
-
-    return 0;
+    ll d = exgcd(b, a % b, y, x);
+    y -= (a / b) * x;
+    return d;
 }

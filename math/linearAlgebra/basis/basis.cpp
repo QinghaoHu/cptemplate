@@ -25,19 +25,35 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-void solve() {
-
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-
-    int tt;
-    cin >> tt;
-    while(tt--) {
-        solve();
+struct linear_basis {
+    ll num[61] {};
+    bool insert(ll x) {
+        for (int i = 59; i >= 0; i--) {
+            if (x & (1ll << i)) {
+                if (num[i] == 0) {
+                    num[i] = x;
+                    return true;
+                } else {
+                    x ^= num[i];
+                }
+            }
+        }
+        return false;
     }
 
-    return 0;
-}
+    ll queryMin(ll x) {
+        for (int i = 59; i >= 0; i--) {
+            x = min(x, x ^ num[i]);
+        }
+        return x;
+    }
+
+    ll queryMax(ll x) {
+        for (int i = 59; i >= 0; i--) {
+            x = max(x, x ^ num[i]);
+        }
+        return x;
+    }
+};
+// xor amount of cases
+// Can be represent by myself.

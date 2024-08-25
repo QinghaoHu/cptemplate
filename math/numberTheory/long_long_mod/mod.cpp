@@ -9,10 +9,12 @@ using namespace std;
 #define fi first
 #define se second
 #define arr array
+#define VI vector<int>
 #define SZ(x) ((int)x.size())
 typedef long long ll;
+typedef unsigned long long ull;
 typedef double db;
-typedef vector<int> VI;
+typedef long double ld;
 typedef pair<int, int> PII;
 const int mod = 999971;
 const db eps = 1e-9;
@@ -25,19 +27,15 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-void solve() {
-
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-
-    int tt;
-    cin >> tt;
-    while(tt--) {
-        solve();
+ll mul(ll a, ll b, ll c) {
+    a %= c, b %= c;
+    ll d = ((long double) a * b / c);
+    d = a * b - d * c;
+    if (d > c) {
+        d -= c;
     }
-
-    return 0;
+    if (d < 0) {
+        d += c;
+    }
+    return d;
 }

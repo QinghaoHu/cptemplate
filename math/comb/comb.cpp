@@ -25,19 +25,20 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-void solve() {
+struct comb {
+    vector<vector<int> > _c;
+    // c[i][j] -> (i -> j)
+    comb(int n) : c(n, vector<int>(n, 0)) {}
 
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-
-    int tt;
-    cin >> tt;
-    while(tt--) {
-        solve();
+    void build1() {
+        for (int i = 0; i < (int)c.size(); i++) {
+            for (int j = 0; j <= i; j++) {
+                if (!j) {
+                    c[i][j] = 1;
+                } else {
+                    c[i][j] = c[i - 1][j] + c[i - 1][j - 1];
+                }
+            }
+        }
     }
-
-    return 0;
 }

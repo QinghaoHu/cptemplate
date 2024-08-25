@@ -1,3 +1,4 @@
+// 逆元
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, a, n) for (int i = a; i < n; i++)
@@ -25,19 +26,11 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 #define debug(x) cerr << #x << " = " << x << '\n';
 #endif
 
-void solve() {
+const int N = 100010;
+ll inv[N];
 
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-
-    int tt;
-    cin >> tt;
-    while(tt--) {
-        solve();
+void solve(ll n, ll p) {
+    for (int i = 2; i <= n; i++) {
+        inv[i] = (ll)(p - p / i) * inv[p % i] % p; 
     }
-
-    return 0;
 }
