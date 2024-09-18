@@ -27,11 +27,11 @@ ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 
 
 // headers
-
+template <typename T>
 struct Gauss {
     int n;
-    vector<vector<double>> a;
-    vector<double> b, ans;
+    vector<vector<T>> a;
+    vector<T> b, ans;
     int st = 0;
 
     Gauss(int ns) {
@@ -80,10 +80,11 @@ struct Gauss {
         }
     }
 
-    vector<double> getAns() {
+    vector<T> getAns() {
         return ans;
     }
 };
+
 
 struct xorGauss {
     int n, st = 0;
