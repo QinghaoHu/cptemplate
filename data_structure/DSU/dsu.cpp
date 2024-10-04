@@ -22,7 +22,7 @@ ll powmod(ll a, ll b, ll p) { ll res=1; for(;b;b>>=1){ if(b&1){ res=res*a%p;} a=
 ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 
 struct DSU {
-    std::vector<int> _f, _siz;
+    std::vector<T> _f, _siz;
 
     DSU(int n) {
         init(n);
@@ -30,7 +30,7 @@ struct DSU {
 
     void init(int n) {
         _f.assign(n, 0);
-        std::iota(_f.begin(), _f.end(),0);
+        std::iota(_f.begin(), _f.end(), 0);
         _siz.assign(n, 1);
     }
 
