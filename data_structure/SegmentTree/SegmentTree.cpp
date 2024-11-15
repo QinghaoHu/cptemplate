@@ -2,23 +2,25 @@
 using namespace std;
 
 const int N = 201000;
+typedef long long ll;
 
-template<typename T, int n>
 struct SegmentTree {
 	struct val {
-		//content
 
 	};
 
 	struct tag {
-		// set tag
 
 	};
 
 	struct node {
-		// node
 
-	} seg[N * 4];
+	};
+
+    vector<node> seg;
+
+    SegmentTree(): seg(10005) {}
+    SegmentTree(int n): seg(n * 4) {}
 
 	void update(int id) {
 		// Fill in how to update the node

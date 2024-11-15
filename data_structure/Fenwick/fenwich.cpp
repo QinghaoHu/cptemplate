@@ -1,14 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 201000;
-
 template <typename T>
 struct BIT {
 	int size;
 	std::vector<T> a;
 
-	BIT(): size(N), a(N, 0) {}
+	BIT(): size(100006), a(10005, 0) {}
 	BIT(int x): size(x), a(x + 1, 0) {}
 
 	void modify(int x, T s) {
