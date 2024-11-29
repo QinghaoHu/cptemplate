@@ -1,44 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define rep(i, a, n) for (int i = a; i < n; i++)
-#define per(i, a, n) for (int i = a; i >= n; i--)
-#define pb push_back
-#define eb emplace_back
-#define mp make_pair
-#define all(x) (x).begin(), (x).end()
-#define fi first
-#define se second
-#define arr array
-#define SZ(x) ((int)x.size())
-typedef long long ll;
-typedef double db;
-typedef vector<int> VI;
-typedef pair<int, int> PII;
-const int mod = 999971;
-const db eps = 1e-9;
-const db PI = acos(-1.0);
-const int INF = 0x3f3f3f3f;
-ll gcd(ll a, ll b) {return !b ? a : gcd(b, a % b);}
-ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 
-#ifdef DEBUG
-#define debug(x) cerr << #x << " = " << x << '\n';
-#endif
+template<typename T, int mod>
+struct combMod {
+    vector<T> fv, fvc;
 
-struct comb {
-    vector<vector<int> > _c;
-    // c[i][j] -> (i -> j)
-    comb(int n) : c(n, vector<int>(n, 0)) {}
+    combMod(int n): fv(n), fvc(n) {}
 
-    void build1() {
-        for (int i = 0; i < (int)c.size(); i++) {
-            for (int j = 0; j <= i; j++) {
-                if (!j) {
-                    c[i][j] = 1;
-                } else {
-                    c[i][j] = c[i - 1][j] + c[i - 1][j - 1];
-                }
-            }
+    T powmod(T a, T b) {
+        T c = 1;
+        for (; b; b >>= 1) {
+            if (b & 1) c = (c * a) % mod;
+            a = (a * a) % mod;
+        }
+        return c % mod;
+    }
+
+    void init() {
+        fv[0] = 1, fvc[0] = 1;
+        for (int i = 1; i < fv.size(); i++) {
+            fv[i] = fv[i - 1] * i % mod;
+            fvc[i] = powmod(fv[i], mod - 2);
         }
     }
-}
+
+    T getC(T a, T b) {
+        return fv[a] % mod * fvc[a - b] % mod * fvc[b] % mod;
+    }
+};

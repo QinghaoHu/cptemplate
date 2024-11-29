@@ -21,10 +21,6 @@ const int INF = 0x3f3f3f3f;
 ll gcd(ll a, ll b) {return !b ? a : gcd(b, a % b);}
 ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 
-#ifdef DEBUG
-#define debug(x) cerr << #x << " = " << x << '\n';
-#endif
-
 ll exgcd(ll a, ll b, ll &x, ll &y) {
     if (b == 0) {
         x = 1, y = 0;
