@@ -1,25 +1,31 @@
 #include <bits/stdc++.h>
-using namespace std;
-#define rep(i,a,n) for (int i=a; i<n; i++)
-#define per(i,a,n) for (int i=n-1; i>=a; i--)
-#define pb push_back
-#define mp make_pair
-#define all(x) (x).begin(), (x).end()
-#define fi first
-#define se second
-#define SZ(x) (int)((x).size())
-typedef vector<int> VI;
-typedef long long ll;
-typedef pair<int, int> PII;
-typedef double db;
-mt19937 mrand(random_device{}());
-const ll mod = 1000000007;
-const ll INF = 1 << 29;
-ll powmod(ll a,ll b) {ll res = 1; for (; b; b>>=1){if (b&1) res=res*a; a=a*a;}return res;}
-ll gcd(ll a,ll b) { return !b ? a : gcd(b, a%b); }
-//head
 
-int main(){
+using namespace std;
+using ll = long long;
+using ld = long double;
+
+#define FOR(i, a, n) for (int i = a; i < n; i++) 
+#define ROF(i, a, n) for (int i = n; i >= a; i--)
+#define all(x) (x).begin(), (x).end()
+#define mp make_pair
+#define pb push_back
+
+template<typename T>
+void _print(T x) {cerr << x << ' ';}
+template<typename T>
+void _println(T x) {cerr << x << '\n';}
+void _print(bool x) {cerr << (!x ? "false" : "true") << ' ';}
+void _println(bool x) {cerr << (!x ? "false" : "true") << '\n';}
+template<typename T>
+void _print(vector<T> u) {for(auto i : u) _print(i);}
+template<typename T>
+void _println(vector<T> u) {for(auto i : u)_print(i); cerr << '\n';}
+
+const ll mod = 1e9 + 7;
+const double eps = 1e-9;
+const int INF = 1061109567;
+
+int main() {
     ios::sync_with_stdio(0); cin.tie(0);
     
     return 0;
