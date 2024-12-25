@@ -18,12 +18,13 @@ void _print(vector<T> u) {for(auto i : u) _print(i);}
 template<typename T>
 void _println(vector<T> u) {for(auto i : u)_print(i); cerr << '\n';}
 
+const double PI = acos(-1);
 const ll mod = 1e9 + 7;
 const double eps = 1e-9;
 const int INF = 1061109567;
- 
+
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-
+    
     return 0;
 }
