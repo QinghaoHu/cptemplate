@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 
-using namespace std;
 using ll = long long;
 
 template <typename T>
 struct Prim {
 	int n;
-	vector<vector<T>> d;
-	vector<int> dist, isV;
+	std::vector<std::vector<T>> d;
+	std::vector<int> dist, v;
 
 	Prim() {}
 	Prim(int n) {
@@ -16,13 +15,13 @@ struct Prim {
 
 	void init(int n) {
 		this -> n = n;
-		d.resize(n, vector<T>(n, 2e9));
+		d.resize(n, std::vector<T>(n, 2e9));
 		dist.resize(n + 1, 2e9);
-		isV.resize(n + 1, 0);
+		v.resize(n + 1, 0);
 	}
 
 	void add_edge(int x, int y, T z) {
-		a[x][y] = min(a[x][y], z);
+		d[x][y] = min(d[x][y], z);
 	}
 
 	void solve() {

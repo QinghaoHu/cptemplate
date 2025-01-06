@@ -1,30 +1,18 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-using ll = long long;
-using ld = long double;
+using i64 = long long;
+using d64 = long double;
 
-#define FOR(i, a, n) for (int i = a; i < n; i++) 
-#define ROF(i, a, n) for (int i = n; i >= a; i--)
-
-template<typename T>
-void _print(T x) {cerr << x << ' ';}
-template<typename T>
-void _println(T x) {cerr << x << '\n';}
-void _print(bool x) {cerr << (!x ? "false" : "true") << ' ';}
-void _println(bool x) {cerr << (!x ? "false" : "true") << '\n';}
-template<typename T>
-void _print(vector<T> u) {for(auto i : u) _print(i);}
-template<typename T>
-void _println(vector<T> u) {for(auto i : u)_print(i); cerr << '\n';}
-
-const double PI = acos(-1);
-const ll mod = 1e9 + 7;
-const double eps = 1e-9;
-const int INF = 1061109567;
+constexpr double PI = acos(-1);
+constexpr i64 mod = 1e9 + 7;
+constexpr double eps = 1e-9;
+constexpr i64 INF = 1061109567;
 
 int main() {
-    ios::sync_with_stdio(0); cin.tie(0);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
     
     return 0;
 }

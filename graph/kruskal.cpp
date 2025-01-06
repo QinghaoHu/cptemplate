@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
 
-using namespace std;
-using ll = long long;
-
 template <typename T>
 struct Kruskal {
 	struct rec { 
@@ -13,8 +10,8 @@ struct Kruskal {
 	};
 	int n;
 	T ans;
-	vector<int> fa;
-	vector<rec> edge;
+	std::vector<int> fa;
+	std::vector<rec> edge;
 
 	Kruskal() {}
 	Kruskal(int n) {
@@ -36,10 +33,11 @@ struct Kruskal {
 
 	void addEdge(int a, int b, T z) {
 		edge.push_back({a, b, z});
-	}
+	} 
 
 	void solve() {
-		sort(edge.begin(), edge.end());
+		std::vector<char> v; 
+		std::sort(edge.begin(), edge.end());
 		for (auto i : edge) {
 			int a = _find(i.x);
 			int b = _find(i.y);

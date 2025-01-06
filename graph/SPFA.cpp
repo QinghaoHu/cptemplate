@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 
-using namespace std;
 using ll = long long;
 
 template <typename T>
 struct SPFA {
 	int n, m;
-	vector<vector<pair<int, T>>> _path;
-	vector<T> dist; vector<int> isV;
+	std::vector<std::vector<std::pair<int, T>>> _path;
+	std::vector<T> dist; std::vector<int> isV;
 	
 	SPFA(int nl, int ml) {
 		this -> n = nl;
@@ -17,14 +16,14 @@ struct SPFA {
 	}
 	
 	void addEdge(int x, int y, int z) {
-		_path[x].push_back(make_pair(y, z));
+		_path[x].push_back(std::make_pair(y, z));
 	}
 	
 	void solve(int src) {
-		fill(dist.begin(), dist.end(), 0x3f3f3f3f);
-		fill(isV.begin(), isV.end(), 0);
+		std::fill(dist.begin(), dist.end(), 0x3f3f3f3f);
+		std::fill(isV.begin(), isV.end(), 0);
 		dist[src] = 0;
-		queue<int> q;
+		std::queue<int> q;
 		isV[src] = 1;
 		q.push(src);
 		while (!q.empty()) {

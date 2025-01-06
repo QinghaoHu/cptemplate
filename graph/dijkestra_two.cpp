@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 
-using namespace std;
-
 template <typename T>
 struct Dijkestra {
 	int n, m;
-	vector<vector<pair<int, T>>> _path;
-	vector<T> dist;
-	vector<int> isV;
+	std::vector<std::vector<std::pair<int, T>>> _path;
+	std::vector<T> dist;
+	std::vector<int> isV;
 
 	Dijkestra(int n, int m) {
 		this -> n = n;
@@ -17,15 +15,15 @@ struct Dijkestra {
 	}
 
 	void addEdge(int x, int y, int z) {
-		_path[x].push_back(make_pair(y, z));
+		_path[x].push_back(std::make_pair(y, z));
 	}
 
 	void solve(int src) {
 		fill(dist.begin(), dist.end(), 0x3f3f3f3f);
 		fill(isV.begin(), isV.end(), 0);
 		dist[src] = 0;
-		priority_queue<pair<int, T>, vector<pair<int, T>>, greater<pair<int, T>>> pq;
-		pq.push(make_pair(0, src));
+		std::priority_queue<std::pair<int, T>, std::vector<std::pair<int, T>>, std::greater<std::pair<int, T>>> pq;
+		pq.push(std::make_pair(0, src));
 		while (!pq.empty()) {
 			auto t = pq.top();
 			pq.pop();
@@ -34,7 +32,7 @@ struct Dijkestra {
 			for (auto i : _path[t.second]) {
 				if (!isV[i.first] && dist[i.first] > dist[t.second] + i.second) {
 					dist[i.first] = dist[t.second] + i.second;
-					pq.push(make_pair(dist[i.first], i.first));
+					pq.push(std::make_pair(dist[i.first], i.first));
 				}
 			}
 		}

@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 
-using namespace std;
-using ll = long long;
+using i64 = long long;
 
 template <typename T>
 struct Dijkestra {
 	int n, m;
-	vector<vector<pair<int, T>>> _path;
-	vector<T> dist;
-	vector<int> isV;
+	std::vector<std::vector<std::pair<int, T>>> _path;
+	std::vector<T> dist;
+	std::vector<int> isV;
 
 	Dijkestra(int n, int m) {
 		this -> n = n;
@@ -18,7 +17,7 @@ struct Dijkestra {
 	}
 
 	void addEdge(int x, int y, int z) {
-		_path[x].push_back(make_pair(y, z));
+		_path[x].push_back(std::make_pair(y, z));
 	}
 
 	int _find() {
@@ -34,8 +33,8 @@ struct Dijkestra {
 	}
 
 	void solve(int src) {
-		fill(dist.begin(), dist.end(), 0x3f3f3f3f);
-		fill(isV.begin(), isV.end(), 0);
+		std::fill(dist.begin(), dist.end(), 0x3f3f3f3f);
+		std::fill(isV.begin(), isV.end(), 0);
 		dist[src] = 0;
 		for (int i = 1; i <= n; i++) {
 			int t = _find();
