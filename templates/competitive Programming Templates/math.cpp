@@ -10,7 +10,7 @@ constexpr double eps = 1e-9;
 constexpr i64 INF = 1061109567;
 
 int main() {
-    std::ios::sync_with_stdio(false);
+    std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
     

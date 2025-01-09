@@ -3,98 +3,90 @@
 constexpr int N = 10010;
 
 struct SCC {
-    int n, idx, cnt;
-    std::vector<int> p[N];
-    std::vector<int> low, bel, dfn, ins;
-    std::vector<std::vector<int>> scc;
-    std::stack<int> stk;
-    std::vector<int> sz;
-
+    int n;
+    std::vector<std::vector<int>> adj;
+    std::vector<int> stk;
+    std::vector<int> dfn, low, bel;
+    int cur, cnt;
+    
+    SCC() {}
     SCC(int n) {
-        this -> n = n;
-        low.resize(n + 1, 0);
-        bel.resize(n + 1, 0);
-        dfn.resize(n + 1, 0);
-        ins.resize(n + 1, 0);
-        sz.resize(n + 1, 0);
-        idx = cnt = 0;
+        init(n);
     }
-
+    
+    void init(int n) {
+        this->n = n;
+        adj.assign(n, {});
+        dfn.assign(n, -1);
+        low.resize(n);
+        bel.assign(n, -1);
+        stk.clear();
+        cur = cnt = 0;
+    }
+    
+    void addEdge(int u, int v) {
+        adj[u].push_back(v);
+    }
+    
     void dfs(int x) {
-        low[x] = dfn[x] = ++idx;
-        ins[x] = true;
-        stk.push(x);
-
-        for (auto v : p[x]) {
-            if (!dfn[v]) dfs(v);
-            if (ins[v]) low[x] = std::min(low[x], low[v]);
-        }
-
-        if (dfn[x] == low[x]) {
-            ++cnt;
-            std::vector<int> c;
-            while (true) {
-                int v = stk.top();
-                stk.pop();
-                c.push_back(v);
-                bel[v] = cnt;
-                sz[cnt]++;
-                ins[v] = false;
-                if (v == x) {
-                    break;
-                }
+        dfn[x] = low[x] = cur++;
+        stk.push_back(x);
+        
+        for (auto y : adj[x]) {
+            if (dfn[y] == -1) {
+                dfs(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (bel[y] == -1) {
+                low[x] = std::min(low[x], dfn[y]);
             }
-            scc.push_back(c);
+        }
+        
+        if (dfn[x] == low[x]) {
+            int y;
+            do {
+                y = stk.back();
+                bel[y] = cnt;
+                stk.pop_back();
+            } while (y != x);
+            cnt++;
         }
     }
-
-    void solve() {
-        for (int i = 1; i <= n; i++) {
-            if (!dfn[i]) dfs(i);
+    
+    std::vector<int> work() {
+        for (int i = 0; i < n; i++) {
+            if (dfn[i] == -1) {
+                dfs(i);
+            }
         }
-    }
-
-    std::vector<std::vector<int>> get_scc() {
-        return scc;
-    }
-
-    int get_bel(int x) {
-        return bel[x];
-    }
-
-    void add_edge(int x, int y) {
-        p[x].push_back(y);
+        return bel;
     }
 };
 
+
 // Easy version
-int low[N], ins[N], dfn[N], sz[N], siz;
-int idx, cnt;
-std::vector<int> scc[N];
+int dfn[N], cur, cnt, bel[N], low[N];
+std::stack<int> stk;
 
-void dfs(int x) {
-	low[x] = dfn[x] = ++idx;
-	ins[x] = true;
-	stk.push(x);
+void dfs(int u) {
+    low[u] = dfn[u] = ++cur;
+    stk.push(u);
+    for (auto v : e[u]) {
+        if (!dfn[v]) {
+            dfs(v);
+            low[u] = std::min(low[u], low[v]);
+        } else if (!bel[v]) {
+            low[u] = std::min(low[u], dfn[v]);
+        }
+    }
 
-	for (auto v : p[x]) {
-		if (!dfn[v]) dfs(v);
-		if (ins[v]) low[x] = std::min(low[x], low[v]);
-	}
-
-	if (dfn[x] == low[x]) {
-		++cnt;
-		int siz = 0;
-		while (true) {
-			int v = stk.top();
-			stk.pop();
-			scc[++siz] = v;
-			bel[v] = cnt;
-			ins[v] = false;
-			if (v == x) {
-				break;
-			}
-		}
-		sz[cnt] = siz;
-	}
+    if (dfn[u] == low[u]) {
+        int y;
+        cnt = 0;
+        do {
+            y = stk.top();
+            stk.pop();
+            bel[y] = cnt;
+        } while (y != u);
+        cnt++;
+    }
 }
