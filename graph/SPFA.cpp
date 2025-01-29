@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-using ll = long long;
-
 template <typename T>
 struct SPFA {
 	int n, m;
