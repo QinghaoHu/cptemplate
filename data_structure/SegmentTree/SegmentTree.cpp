@@ -10,7 +10,7 @@ struct SegmentTree {
 	};
 
 	struct tag {
-
+        
 	};
 
 	struct node {
@@ -20,7 +20,7 @@ struct SegmentTree {
     vector<node> seg;
 
     SegmentTree(): seg(10005) {}
-    SegmentTree(int n): seg(n * 4) {}
+    SegmentTree(int n): seg(n * 4 + 1) {}
 
 	void update(int id) {
 		// Fill in how to update the node

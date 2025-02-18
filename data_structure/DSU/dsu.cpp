@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 
-using namespace std;
-
+template <typename T>
 struct DSU {
 	std::vector<T> _f, _siz;
 
@@ -17,7 +16,7 @@ struct DSU {
 
 	int find(int x) {
 		if (x != _f[x]) {
-				_f[x] = _find(_f[x]);
+            _f[x] = _find(_f[x]);
 		}
 		return _f[x];
 	}
@@ -32,7 +31,7 @@ struct DSU {
 		if (x == y) {
 				return false;
 		}
-		f[y] = x;
+		_f[y] = x;
 		return true;
 	}
 };

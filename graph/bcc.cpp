@@ -29,7 +29,7 @@ struct BCC {
 		int ch = 0;
 		for (auto v : adj[u]) {
 			if (!dfn[v]) {
-				dfs(v);
+				dfs(v, u);
 				ch++;
 				low[u] = std::min(low[v], low[u]);
 				if (low[v] >= dfn[u]) cut[u] = 1; 
