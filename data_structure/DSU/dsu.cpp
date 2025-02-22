@@ -29,7 +29,7 @@ struct DSU {
 		x = find(x);
 		y = find(y);
 		if (x == y) {
-				return false;
+            return false;
 		}
 		_f[y] = x;
 		return true;
