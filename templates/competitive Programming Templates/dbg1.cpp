@@ -27,21 +27,17 @@ void _dbgl(std::pair<T, U> p) {cerr << "(" << p.first << ", " << p.second << ")\
 template<typename T> T gcd(T a, T b) {return (!b ? a : gcd(b, a%b));}
 template<typename T> T lcm(T a, T b) {return (a / gcd(a, b) * b);}
 
-constexpr int INF = 2e9 + 10;
-constexpr int64_t mod = 1e9 + 7;
-
 void solve() {
 	
 }
 
 int main() {
     std::cin.tie(nullptr) -> sync_with_stdio(false);
-    std::cin.exceptions(std::cin.failbit);
 
-	int T;
-    std::cin >> T;
+    int tt; 
+    std::cin >> tt;
 
-    for (int it = 0; it < T; it++) {
+    FOR(i, 0, tt + 1) {
         solve();
     }
 

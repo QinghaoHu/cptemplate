@@ -27,13 +27,8 @@ void _dbgl(std::pair<T, U> p) {cerr << "(" << p.first << ", " << p.second << ")\
 template<typename T> T gcd(T a, T b) {return (!b ? a : gcd(b, a%b));}
 template<typename T> T lcm(T a, T b) {return (a / gcd(a, b) * b);}
 
-constexpr int INF = 2e9 + 10;
-constexpr int64_t mod = 1e9 + 7;
-
 int main() {
     std::cin.tie(nullptr) -> sync_with_stdio(false);
-    std::cin.exceptions(std::cin.failbit);
-
 
     return 0;
 }
