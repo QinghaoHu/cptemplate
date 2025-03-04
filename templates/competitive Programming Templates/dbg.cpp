@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
-
-using std::cerr;
+using namespace std;
 
 #define trav(a, x) for (auto& a : x)
 #define F0R(i, a) for (int i=0; i<(a); i++)
@@ -27,8 +26,11 @@ void _dbgl(std::pair<T, U> p) {cerr << "(" << p.first << ", " << p.second << ")\
 template<typename T> T gcd(T a, T b) {return (!b ? a : gcd(b, a%b));}
 template<typename T> T lcm(T a, T b) {return (a / gcd(a, b) * b);}
 
+template<typename T, typename K> bool ckmin(T &a, K b) {return  b<a ? a=b, 1 : 0;}
+template<typename T, typename K> bool ckmax(T &a, K b) {return  b>a ? a=b, 1 : 0;}
+
 int main() {
-    std::cin.tie(nullptr) -> sync_with_stdio(false);
+	cin.tie(0)->sync_with_stdio(0);
 
     return 0;
 }
