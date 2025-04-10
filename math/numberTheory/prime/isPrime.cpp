@@ -1,52 +1,59 @@
 #include <bits/stdc++.h>
+using namespace std;
 
-const int N = 1e6 + 10;
+// Euler 
+vector<int> minp, primes;
 
-// Here is the template
+void sieve(int n) {
+	minp.assign(n + 1, 0);
+	primes.clear();
 
-template<typename T>
-bool is_prime(T n) {
-    if (n < 2) return false;
-    for (int i = 2; i <= sqrt(n); i++) {
-        if (n % i == 0) {
-            return false;
-        }
-    }
-    return true;
+	for (int i = 2; i <= n; i++) {
+		if (minp[i] == 0) {
+			minp[i] = i;
+			primes.push_back(i);
+		}
+
+		for (auto p : primes) {
+			if (i * p > n) break;
+			minp[i * p] = p;
+			if (p == minp[i]) {
+				break;
+			}
+		}
+	}
 }
 
-// Eratosthenes:
-std::array<bool, N> v;
-
-void primes(int n) {
-    fill(all(v), false);
-    for (int i = 2; i <= n; i++) {
-        if (v[i] == true) {
-            continue;
-        }
-        cout << i << " \n";
-        for (int j = i; j <= n / i; j++) {
-            v[i * j] = true;
-        }
-    }
+bool isprime(int n) {
+	return minp[n] == n;
 }
 
-//Solve Eratosthenes in the O(n)
-std::array<int, N> vs, prime;
-
-void get_primes(int n) {
-    fill(all(vs), 0);
-    int m = 0;
+// Euler
+void sieve(int n) {
+    minp.assign(n + 1, 0);
+    phi.assign(n + 1, 0);
+    primes.clear();
+    
     for (int i = 2; i <= n; i++) {
-        if (vs[i] == 0) {
-            v[i] = i;
-            prime[++m] = i;
+        if (minp[i] == 0) {
+            minp[i] = i;
+            phi[i] = i - 1;
+            primes.push_back(i);
         }
-        for (int j = 1; j <= m; j++) {
-            if (prime[j] > v[i] || prime[j] > n / i) {
+        
+        for (auto p : primes) {
+            if (i * p > n) {
                 break;
             }
-            vs[i * prime[j]] = prime[j];
+            minp[i * p] = p;
+            if (p == minp[i]) {
+                phi[i * p] = phi[i] * p;
+                break;
+            }
+            phi[i * p] = phi[i] * (p - 1);
         }
+    }
+    for (int i = 2; i <= n; i++) {
+        phi[i] += phi[i - 1];
     }
 }

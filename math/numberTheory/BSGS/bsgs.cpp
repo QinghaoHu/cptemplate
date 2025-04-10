@@ -1,33 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define rep(i, a, n) for (int i = a; i < n; i++)
-#define per(i, a, n) for (int i = a; i >= n; i--)
-#define pb push_back
-#define eb emplace_back
-#define mp make_pair
-#define all(x) (x).begin(), (x).end()
-#define fi first
-#define se second
-#define arr array
-#define SZ(x) ((int)x.size())
-typedef long long ll;
-typedef double db;
-typedef vector<int> VI;
-typedef pair<int, int> PII;
-const db eps = 1e-9;
-const db PI = acos(-1.0);
-const int INF = 0x3f3f3f3f;
-ll gcd(ll a, ll b) {return !b ? a : gcd(b, a % b);}
-ll lcm(ll a, ll b) {return a / gcd(a, b) * b;}
 
-#ifdef DEBUG
-#define debug(x) cerr << #x << " = " << x << '\n';
-#endif
+#define ll int64_t
 
 struct BSGS {
-    ll a, b, m;
+    int64_t a, b, m;
 
-    BSGS(ll x, ll y, ll z) : a(x), b(y), m(z) {}
+    BSGS(int64_t x, int64_t y, int64_t z) : a(x), b(y), m(z) {}
 
     ll powmod(ll x, ll y, ll z) {
         ll res = 1;
@@ -54,7 +33,7 @@ struct BSGS {
         d = b;
         for (int r = 0; r < T; r++) {
             if (hs.count(d)) {
-                ans = min(ans, hs[d] - r);
+                ans = min(ans, (int64_t)hs[d] - r);
             }
             d = d * a % m;
         }
