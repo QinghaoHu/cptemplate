@@ -1,6 +1,3 @@
-/*
- *	Author: Qinghao Hu
- */
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,6 +12,17 @@ using ll = long long;
 using ld = long double;
 using uint = unsigned int;
 using ull = unsigned long long;
+
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<ld> vd;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<pd> vpd;
 
 #define trav(a, x) for (auto& a : x)
 #define rep(i, a, b) for (int i=a; i<(b); i++)
@@ -46,11 +54,14 @@ int main() {
 	cin.exceptions(cin.failbit);
 
 	int tt = 1;
-	cin >> tt;
+	// cin >> tt;
 
 	rep(i, 1, tt + 1) {
 		startTime = clock();
-		cerr << "___ Case " << i << " start ___\n\n";
+		bool sp = 0;
+		// sp = 1;
+		if (sp)
+			cerr << "___ Case " << i << " start ___\n\n";
 
 		solve();
 
@@ -60,9 +71,11 @@ int main() {
 		// 	cout << "NO\n";
 		// }
 
-		cerr << "___ Case #" << i << " end ___\n";
-		cerr << "Time = " << fixed << setprecision(5) << getCurrentTime() << '\n';
-		cerr << "+++++++++++++++++++\n\n";
+		if (sp) {
+			cerr << "___ Case #" << i << " end ___\n";
+			cerr << "Time = " << fixed << setprecision(5) << getCurrentTime() << '\n';
+			cerr << "+++++++++++++++++++\n\n";
+		}
 	}
 
 	return 0;
