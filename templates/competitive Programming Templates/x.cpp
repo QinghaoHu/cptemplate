@@ -30,10 +30,15 @@ typedef vector<pd> vpd;
 #define all(x) (x).begin(), (x).end()
 #define pb push_back
 #define mp make_pair
+#define eprintf(...) fprintf(stderr, __VA_ARGS__)
 
 clock_t startTime;
 double getCurrentTime() {
 	return (double)(clock() - startTime) / CLOCKS_PER_SEC;
+}
+
+void fast_OI() {
+	cin.tie(0)->sync_with_stdio(0); cin.exceptions(cin.failbit);
 }
 
 mt19937 mrand(random_device{}());
@@ -43,15 +48,15 @@ template<typename T> T gcd(T a, T b) {return (!b ? a : gcd(b, a%b));}
 template<typename T> T lcm(T a, T b) {return (a / gcd(a, b) * b);}
 template<typename T, typename K> bool ckmin(T &a, K b) {return  b<a ? a=b, 1 : 0;}
 template<typename T, typename K> bool ckmax(T &a, K b) {return  b>a ? a=b, 1 : 0;}
+// header
 
 void solve() {
-	
+
 
 }
 
 int main() {
-	cin.tie(0)->sync_with_stdio(0);
-	cin.exceptions(cin.failbit);
+	fast_OI();
 
 	int tt = 1;
 	// cin >> tt;
@@ -61,7 +66,7 @@ int main() {
 		bool sp = 0;
 		// sp = 1;
 		if (sp)
-			cerr << "___ Case " << i << " start ___\n\n";
+			eprintf("___ Case %d start___\n", i);
 
 		solve();
 
@@ -72,9 +77,9 @@ int main() {
 		// }
 
 		if (sp) {
-			cerr << "___ Case #" << i << " end ___\n";
-			cerr << "Time = " << fixed << setprecision(5) << getCurrentTime() << '\n';
-			cerr << "+++++++++++++++++++\n\n";
+			eprintf("___ Case # %d end ___\n", i);
+			eprintf("Time = %.4f\n", getCurrentTime());
+			eprintf("+++++++++++++++++++\n\n");
 		}
 	}
 
